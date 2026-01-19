@@ -1,0 +1,80 @@
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.madhub.tiktokaccountwarming">
+
+    <!--
+        This application utilizes the MadHub automation tool to manage TikTok accounts effectively.
+        It is designed for automating tasks like content scheduling and account management.
+        The application requires various permissions to ensure it can operate smoothly while complying with platform guidelines.
+    -->
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="TikTok account warming script - Android Automation Tool"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        
+        <!-- 
+            The MainActivity serves as the entry point of the application.
+            In this scenario, it initializes the user interface and starts the automation process for the TikTok account.
+        -->
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- 
+            AutomationService is designed to run in the background to handle scheduled tasks.
+            This is crucial for maintaining continuous interaction with the TikTok platform for account management.
+        -->
+        <service android:name=".AutomationService"
+                 android:foregroundServiceType="location" />
+                 
+    </application>
+
+    <!--
+        Permission declarations are critical for allowing the app to access necessary resources.
+        Each permission is explained in the context of the app's functionality to enhance user awareness.
+    -->
+
+    <!-- 
+        In this scenario, internet access is crucial for the application to connect with TikTok servers.
+        The app needs this permission to perform automated tasks over the network.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--
+        Access to external storage is needed for saving content created by the user.
+        This permission allows the application to store images, videos, or other media files.
+        Workflow step: When a user schedules a post, media files are stored to enable posting.
+    -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- 
+        In this use case, the application may require access to the device’s network state to manage connections effectively.
+        This helps ensure that automated tasks are performed without interruptions.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>
+```
+
+### Explanation of Key Components:
+
+1. **MainActivity**: 
+   - **Scenario**: This is the first screen users see when they launch the application. It initializes the user interface, allowing users to set up their TikTok account management.
+   - **Workflow Step**: Users can navigate through this activity to configure their automation settings.
+
+2. **AutomationService**: 
+   - **Scenario**: This service runs background operations necessary for executing scheduled tasks, ensuring automation can occur without user intervention.
+   - **Workflow Step**: It handles the automation processes, such as posting content according to the schedules defined by users.
+
+3. **Permission Declarations**:
+   - Each permission is required to provide the necessary functionality while ensuring compliance with best practices in app development. The permissions are carefully selected based on the app’s intended operations, enhancing user experience while following platform guidelines. 
+
+By utilizing MadHub for social media management on Android, users can benefit from advanced capabilities like 24/7 automated operations, enhancing their TikTok account management experience without violating platform terms of service.
